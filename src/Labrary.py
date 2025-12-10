@@ -22,3 +22,22 @@ class Library:
             print(f"Удажена книга: {book.title} {book.author}")
         else:
             print(f"Книги {book.title} {book.author} не было в библиотеке")
+    def find_by_author(self, author: str):
+        books = self.ind.find_by_author(author)
+        print(f"У авторф '{author}' найдено {len(books)} книг")
+        return books
+    def find_by_year(self, year: int):
+        books = self.ind.find_by_year(year)
+        print(f"По году {year} найдено {len(books)} книг")
+        return books  
+    def find_by_title(self, title: str):
+        books = self.ind.find_by_title(title)
+        print(f"По названию '{title}' найдено {len(books)} книг")
+        return books
+    def find_by_isbn(self, isbn: str):
+        book = self.ind.find_by_isbn(isbn)
+        if len(book):
+            print(f" По ISBN {isbn} найдена '{book.title}'")
+        else:
+            print(f"Книги по такому индексу не найдено")
+

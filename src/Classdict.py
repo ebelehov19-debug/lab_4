@@ -40,5 +40,13 @@ class IndexDict:
                 self.year_index[book.year].remove(book)
                 if not self.year_index[book.year]:
                     del self.year_index[book.year]
+    def find_by_author(self, author: str):
+        return self.author_index.get(author, [])   
+    def find_by_year(self, year: int):
+        return self.year_index.get(year, [])    
+    def find_by_title(self, title: str):
+        return self.title_index.get(title, [])
+    def find_by_isbn(self, isbn: str):
+        return self.isbn_index.get(isbn,[])
 
     
