@@ -27,5 +27,18 @@ class IndexDict:
             self.year_index[book.year] = []
         if book not in self.year_index[book.year]:
             self.year_index[book.year].append(book)
+    def remove_book(self, book):
+        if book.isbn in self.isbn_index:
+            del self.isbn_index[book.isbn]
+        if book.author in self.author_index:
+            if book in self.author_index[book.author]:
+                self.author_index[book.author].remove(book)
+                if not self.author_index[book.author]:
+                    del self.author_index[book.author]
+        if book.year in self.year_index:
+            if book in self.year_index[book.year]:
+                self.year_index[book.year].remove(book)
+                if not self.year_index[book.year]:
+                    del self.year_index[book.year]
 
     
