@@ -1,0 +1,18 @@
+from src.classBook import Book
+class BookCollection:
+    def __init__(self):
+        self.books=[]
+    def __len__(self) -> int:
+        return len(self.books)
+    def __iter__(self):
+        return iter(self.books)
+    def __getitem__(self, ind):
+        if isinstance(ind, slice):
+            return self.books[ind]
+        return self.books[ind]
+    def add(self,val)->None:
+        self.books.append(val)
+    def delite(self,book)->None:
+        if book in self.books:
+            self.books.remove(book)
+    
