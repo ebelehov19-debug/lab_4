@@ -16,7 +16,7 @@ class IndexDict:
         elif isinstance(key, int):
             if key in self.year_index:
                 return self.year_index[key] 
-        raise KeyError(f"Ключ '{key}' не найден в индексе")
+        raise KeyError(f"Ключ '{key}' не найден в словаре")
     def update_index(self,book):
         self.isbn_index[book.isbn] = book
         if book.author not in self.author_index:
