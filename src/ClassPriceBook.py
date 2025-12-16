@@ -10,13 +10,13 @@ class PriceBook(Book):
     def sell(self,cnt:int=1):
         if not self.is_for_sale:
             print(f"Книга '{self.title}' не доступна для продажи")
-            return False  
+            return None  
         if cnt <= 0:
             print("Количество должно быть больше 0")
-            return False
+            return None
         if self.quantity < cnt:
             print(f"Недостаточно книг '{self.title}' в наличии. Доступно: {self.quantity}")
-            return False
+            return None
         self.quantity -= cnt
         self.total_sold += cnt
         self.total_revenue += cnt * self.price

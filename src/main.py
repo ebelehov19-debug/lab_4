@@ -8,8 +8,8 @@ def main():
     lib=Library()
     lib.add_book(book1)
     lib.add_book(book2)
-    print("\nПоиск по автору 'Лев Толстой':")
+    print("Поиск по автору 'Лев Толстой':")
     tolstoy_books = lib.find_by_author("Лев Толстой")
     for book in tolstoy_books:
-        print(f"  - {book.title} ({book.year})")
+        print(f" - {book.title} ({book.year})")
 main()
