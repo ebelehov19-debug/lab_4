@@ -12,6 +12,8 @@ class BookCollection:
     def delite(self,book)->None:
         if book in self.books:
             self.books.remove(book)
+    def __contains__(self, book):
+        return book in self.books
 
         
     

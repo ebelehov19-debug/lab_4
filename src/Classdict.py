@@ -3,6 +3,7 @@ class IndexDict:
         self.isbn_index = {}
         self.author_index = {}
         self.year_index = {}
+        self.title_index = {}
     def __len__(self):
         return len(self.isbn_index)
     def __iter__(self):
@@ -13,6 +14,8 @@ class IndexDict:
                 return self.isbn_index[key]
             elif key in self.author_index:
                 return self.author_index[key]  
+            elif key in self.title_index:
+                return self.title_index[key]
         elif isinstance(key, int):
             if key in self.year_index:
                 return self.year_index[key] 
@@ -27,6 +30,10 @@ class IndexDict:
             self.year_index[book.year] = []
         if book not in self.year_index[book.year]:
             self.year_index[book.year].append(book)
+        if book.title not in self.title_index:
+            self.year_index[book.year] = []
+        if book not in self.title_index[book.title]:
+            self.title_index[book.title].append(book)
     def remove_book(self, book):
         if book.isbn in self.isbn_index:
             del self.isbn_index[book.isbn]
@@ -40,6 +47,11 @@ class IndexDict:
                 self.year_index[book.year].remove(book)
                 if not self.year_index[book.year]:
                     del self.year_index[book.year]
+        if book.title in self.title_index:
+            if book in self.title_index[book.title]:
+                self.year_index[book.title].remove(book)
+                if not self.title_index[book.title]:
+                    del self.title_index[book.title]
     def find_by_author(self, author: str):
         return self.author_index.get(author, [])   
     def find_by_year(self, year: int):

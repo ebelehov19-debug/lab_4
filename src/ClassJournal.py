@@ -17,7 +17,7 @@ class Jornal(Book):
         old_publisher = self.publesher
         self.publesher = new_publesher
         print(f"Издательство изменено с '{old_publisher}' на '{new_publesher}'")
-    def cnt_jornal_yers(self):
+    def cnt_jornal_yers(self)-> None:
         period={'month':12,'year':1,'week':52,'day':365}
         print(f"Журнал {self.title} за год вышел {period[self.period]} раз")
     
