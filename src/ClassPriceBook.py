@@ -7,7 +7,7 @@ class PriceBook(Book):
         self.total_sold = 0  
         self.total_revenue = 0.0  
         self.is_for_sale = True  
-    def sell(self,cnt:int=1):
+    def sell(self,cnt:int=1)->None:
         if not self.is_for_sale:
             print(f"Книга '{self.title}' не доступна для продажи")
             return None  
@@ -33,9 +33,11 @@ class PriceBook(Book):
         print(f"Закуплено {quantity} книг '{self.title}'. Теперь в наличии: {self.quantity}")
         if new_price:
             print(f"Новая цена: {self.price} рублей")
+        return None
     def change_price(self,newprice:float)->None:
         self.price=newprice
         print(f"Новая цена {newprice}")
+        return None
     def get_sales_statistics(self) -> dict:
         return {
             'title': self.title,
@@ -45,5 +47,6 @@ class PriceBook(Book):
             'current_quantity': self.quantity,
             'is_for_sale': self.is_for_sale,
         }
+    
 
     
