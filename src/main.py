@@ -28,16 +28,32 @@ def run_simulation(steps: int = 20, seed: int | None = None) -> None:
         "add_random_book",
         "remove_random_book", 
         "search_by_author",
-        "search_by_year",            
-        "search_by_genre",
-        "update_all_indexes",   
+        "search_by_year",
+        "search_by_isbn",
         "get_library_statistics",
         "sell_pricebook",
         "zakup_pricebook",
     ]
-    for i in range(1,steps+1):
+    for _ in range(1,steps+1):
         eve=random.choice(events)
         print(eve)
+        if eve==events[0]:
+            library.add_book(random.choice(randbook))
+        elif eve == events[1]:
+            library.remove_book(random.choice(randbook))
+        elif eve == events[2]:
+            library.find_by_author(random.choice(list(library.ind.author_index.keys())))
+        elif eve == events[3]:
+            library.find_by_year(random.choice(list(library.ind.year_index.keys())))
+        elif eve == events[4]:
+            library.find_by_isbn(random.choice(list(library.ind.isbn_index.keys())))
+        elif eve == events[5]:
+            print(f"Статистика библиотеки:")
+            print(f"Всего книг: {len(library)}")
+            print(f"Уникальных авторов: {len(library.ind.author_index)}")
+            print(f"Уникальных годов: {len(library.ind.year_index)}")
+            print(f"Уникальных жанров: {len(library.ind.genre_index)}")
+
 def main():
     run_simulation()
 main()

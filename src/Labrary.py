@@ -36,7 +36,7 @@ class Library:
         return books
     def find_by_isbn(self, isbn: str):
         book = self.ind.find_by_isbn(isbn)
-        if len(book):
+        if isbn!='':
             print(f" По ISBN {isbn} найдена '{book.title}'")
         else:
             print(f"Книги по такому индексу не найдено")
