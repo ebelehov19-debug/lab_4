@@ -12,12 +12,12 @@ class Jornal(Book):
         return (f"{self.title} - {self.author}  {self.year} количество страниц: {self.pages}, период выхода: {self.period}, издательство {self.publesher}")
     def size(self)->None:
         "Длинна журнала в страницах"
-        print(f"Количество страниц в журнале {self.pages}")
+        return f"Количество страниц в журнале {self.pages}"
     def change_publesher(self, new_publesher: str) -> None:
-        old_publisher = self.publesher
+        old_publesher = self.publesher
         self.publesher = new_publesher
-        print(f"Издательство изменено с '{old_publisher}' на '{new_publesher}'")
+        return f"Издательство изменено с '{old_publesher}' на '{new_publesher}'"
     def cnt_jornal_yers(self)-> None:
         period={'month':12,'year':1,'week':52,'day':365}
-        print(f"Журнал {self.title} за год вышел {period[self.period]} раз")
+        return f"Журнал {self.title} за год вышел {period[self.period]} раз"
     
