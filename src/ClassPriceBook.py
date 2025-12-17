@@ -7,37 +7,33 @@ class PriceBook(Book):
         self.total_sold = 0  
         self.total_revenue = 0.0  
         self.is_for_sale = True  
-    def sell(self,cnt:int=1)->None:
+    def sell(self,cnt:int=1)->str:
         if not self.is_for_sale:
-            print(f"Книга '{self.title}' не доступна для продажи")
-            return None  
+            return f"Книга '{self.title}' не доступна для продажи"
         if cnt <= 0:
-            print("Количество должно быть больше 0")
-            return None
+            return "Количество должно быть больше 0"
         if self.quantity < cnt:
-            print(f"Недостаточно книг '{self.title}' в наличии. Доступно: {self.quantity}")
-            return None
+            return f"Недостаточно книг '{self.title}' в наличии {self.quantity}"
         self.quantity -= cnt
         self.total_sold += cnt
         self.total_revenue += cnt * self.price
-        print(f"Продано {cnt} книг '{self.title}' за {cnt * self.price} рублей")
         if self.quantity==0:
             self.is_for_sale = False
-    def zakup(self, quantity: int, new_price: float = None)->None:
+        return f"Продано {cnt} книг '{self.title}' за {cnt * self.price} рублей" 
+    def zakup(self, quantity: int, new_price: float = None)->str:
         if quantity <= 0:
-            print("Количество должно быть больше 0")
+            return "Количество должно быть больше 0"
         if new_price is not None and new_price > 0:
             self.price = new_price
         self.quantity += quantity
         self.is_for_sale = True  
-        print(f"Закуплено {quantity} книг '{self.title}'. Теперь в наличии: {self.quantity}")
-        if new_price:
-            print(f"Новая цена: {self.price} рублей")
-        return None
-    def change_price(self,newprice:float)->None:
+        s=''
+        if  new_price is not None and new_price>0 :
+            s+=f"Новая цена: {self.price} рублей. "
+        return s+f"Закуплено {quantity} книг '{self.title}'. Теперь в наличии: {self.quantity}"
+    def change_price(self,newprice:float)->str:
         self.price=newprice
-        print(f"Новая цена {newprice}")
-        return None
+        return f"Новая цена {newprice}"
     def get_sales_statistics(self) -> dict:
         return {
             'title': self.title,
