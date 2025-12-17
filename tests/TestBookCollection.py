@@ -34,7 +34,6 @@ def test_getitem_by_index():
     assert collection[-1] == book2
     assert collection[-2] == book1
 def test_getitem_slice():
-    """Тест 6: Получение среза"""
     collection = BookCollection()
     books = [
         Book("Книга1", "Автор1", 2000, "Жанр1", "1"),
