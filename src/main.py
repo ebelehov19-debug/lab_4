@@ -31,6 +31,7 @@ def run_simulation(steps: int = 20, seed: int | None = None) -> None:
         "search_by_year",
         "search_by_isbn",
         "get_library_statistics",
+        "get_library_statistics_full",
         "sell_pricebook",
         "zakup_pricebook",
     ]
@@ -53,6 +54,25 @@ def run_simulation(steps: int = 20, seed: int | None = None) -> None:
             print(f"Уникальных авторов: {len(library.ind.author_index)}")
             print(f"Уникальных годов: {len(library.ind.year_index)}")
             print(f"Уникальных жанров: {len(library.ind.genre_index)}")
+        elif eve == events[6]:
+            if library.ind.year_index:
+                oldest_year = min(library.ind.year_index.keys())
+                newest_year = max(library.ind.year_index.keys())
+                print(f"Книги в библиотеке с {oldest_year} года по {newest_year} год")
+            if library.ind.author_index:
+                popular_author = max(library.ind.author_index.items(),key=lambda x: len(x[1]))
+                print(f"Самый популярный автор в библиотеке {popular_author[0]} {len(popular_author[1])} книг")
+            if library.ind.genre_index:
+                    popular_genre = max(library.ind.genre_index.items(), key=lambda x: len(x[1]))
+                    print(f"Самый популярный жанр в библиотеке {popular_genre[0]} {len(popular_genre[1])} книг")
+        elif eve == events[7]:
+            pb = [b for b in library.books if isinstance(b, PriceBook) and b.is_for_sale]
+            if len(pb)>0:
+                book_to_sell = random.choice(pb)
+                max_sell = min(book_to_sell.quantity, 5)
+                quantity = random.randint(1, max_sell) if max_sell > 0 else 1  
+                result = book_to_sell.sell(quantity)
+                print(f"{result}")
 
 def main():
     run_simulation()
