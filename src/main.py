@@ -35,9 +35,9 @@ def run_simulation(steps: int = 20, seed: int | None = None) -> None:
         "sell_pricebook",
         "check_book",
     ]
-    for _ in range(1,steps+1):
+    for i in range(1,steps+1):
         eve=random.choice(events)
-        print(eve)
+        print(1,eve)
         if eve==events[0]:
             library.add_book(random.choice(randbook))
         elif eve == events[1]:
@@ -94,15 +94,22 @@ def run_simulation(steps: int = 20, seed: int | None = None) -> None:
                 print(f"Издательство: {random_book.publesher}")
             else:
                 print(f"Тип: Обычная книга")
-            
-
-
-
 def main():
     print("Приветствую!!! Это симуляция работы  библиотеки! Формат входных данных: первое число - это количество шагов в симуляции, ф второе для повторного воспроизведение симуляции. Для завершения напишите exit")
     while (a := input()) != 'exit':
-        s=a.split()
-        run_simulation(int(s[0]),int(s[1]))
-        print("Работа симуляции завершилась. Можете ввести еше данные для работы симуляции или выйти, написав 'exit'")
-    print("Использование симуляции завершено! Спасибо за использование! Хорошого дня!")
+        try:
+            s = a.split()
+            if len(s) == 2:
+                run_simulation(int(s[0]), int(s[1]))
+                print("Работа симуляции завершилась. Можете ввести еще данные для работы симуляции или выйти, написав 'exit'")
+            elif len(s) == 1:
+                run_simulation(int(s[0]))
+                print("Работа симуляции завершилась. Можете ввести еще данные для работы симуляции или выйти, написав 'exit'")
+            elif len(s) == 0:
+                print("Введите значение")
+            else:
+                print("Некорректное количество значений")
+        except ValueError as e:
+            print(f"Ошибка преобразования данных: {e} введите целые числа.")
+    print("Использование симуляции завершено! Спасибо за использование! Хорошего дня!")
 main()
