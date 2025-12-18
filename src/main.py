@@ -33,7 +33,7 @@ def run_simulation(steps: int = 20, seed: int | None = None) -> None:
         "get_library_statistics",
         "get_library_statistics_full",
         "sell_pricebook",
-        "zakup_pricebook",
+        "check_book",
     ]
     for _ in range(1,steps+1):
         eve=random.choice(events)
@@ -73,6 +73,30 @@ def run_simulation(steps: int = 20, seed: int | None = None) -> None:
                 quantity = random.randint(1, max_sell) if max_sell > 0 else 1  
                 result = book_to_sell.sell(quantity)
                 print(f"{result}")
+            else:
+                print("В библиотеке нет книг для продажи")
+        elif eve == events[8]:
+            random_book = random.choice(library.books)
+            print(f"Проверка доступности книги:")
+            print(f"Название: {random_book.title}")
+            print(f"Автор: {random_book.author}")                
+            if isinstance(random_book, PriceBook):
+                print("Тип: Книга для продажи")
+                print(f"Доступна для продажи: {'Да' if random_book.is_for_sale else 'Нет'}")
+                print(f"В наличии: {random_book.quantity} шт.")
+                print(f"Цена: {random_book.price:.2f} руб.")
+                print(f"Продано всего: {random_book.total_sold} шт.")
+                print(f"Выручка: {random_book.total_revenue:.2f} руб.")
+            elif isinstance(random_book, Jornal):
+                print(f"Тип: Журнал")
+                print(f"Страниц: {random_book.pages}")
+                print(f"Периодичность: {random_book.period}")
+                print(f"Издательство: {random_book.publesher}")
+            else:
+                print(f"Тип: Обычная книга")
+            
+
+
 
 def main():
     run_simulation()
