@@ -17,17 +17,17 @@ class Library:
         if book not in self.books:
             self.books.add(book)
             self.ind.update_index(book)
-            print(f"Добавлена книга: {book.title} {book.author}")
+            return f"Добавлена книга: {book.title} {book.author}"
         else:
-            print(f"Книга '{book.title}' уже есть в библиотеке")
+            return f"Книга '{book.title}' уже есть в библиотеке"
     def remove_book(self, book):
         """Удаляет книгу из библиотеки"""
         if book in self.books:
             self.books.delite(book)
             self.ind.remove_book(book)
-            print(f"Удажена книга: {book.title} {book.author}")
+            return f"Удажена книга: {book.title} {book.author}"
         else:
-            print(f"Книги {book.title} {book.author} не было в библиотеке")
+            return f"Книги {book.title} {book.author} не было в библиотеке"
     def find_by_author(self, author: str):
         """Находит книги по автору"""
         books = self.ind.find_by_author(author)
@@ -45,8 +45,6 @@ class Library:
         return books
     def find_by_isbn(self, isbn: str):
         """Находит книгу по ISBN"""
-        book = self.ind.find_by_isbn(isbn)
-        if isbn != '':
-            print(f" По ISBN {isbn} найдена '{book.title}'")
-        else:
-            print(f"Книги по такому индексу не найдено")
+        books = self.ind.find_by_isbn(isbn)
+        print(f"По ISBN '{isbn}' найдено")
+        return books

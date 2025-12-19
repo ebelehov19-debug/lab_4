@@ -14,6 +14,7 @@ def run_simulation(steps: int = 20, seed: int | None = None) -> None:
         Book("Преступление и наказание", "Фёдор Достоевский", 1866, "Роман", "2"),
         Book("Мастер и Маргарита", "Михаил Булгаков", 1967, "Роман", "97"),
         Book("1984", "Джордж Оруэлл", 1949, "Антиутопия", "98"),
+        Book("Собачье Сердце","Михаил Булгаков", 1967, "Рассказ", "33"),
         Book("Гарри Поттер и философский камень", "Джоан Роулинг", 1997, "Фэнтези", "978"),
         Jornal("Наука и жизнь", "Редакция", 2023, "Научный", "123", 80, "month", "Наука"),
         Jornal("Техника молодёжи", "Редакция", 2022, "Технический", "123", 64, "month", "Техника"),
@@ -37,17 +38,17 @@ def run_simulation(steps: int = 20, seed: int | None = None) -> None:
     ]
     for i in range(1,steps+1):
         eve=random.choice(events)
-        print(1,eve)
+        print(i,eve)
         if eve==events[0]:
-            library.add_book(random.choice(randbook))
+            print(library.add_book(random.choice(randbook)))
         elif eve == events[1]:
-            library.remove_book(random.choice(randbook))
+            print(library.remove_book(random.choice(randbook)))
         elif eve == events[2]:
-            library.find_by_author(random.choice(list(library.ind.author_index.keys())))
+            print(f'Информация: {library.find_by_author(random.choice(list(library.ind.author_index.keys())))}')
         elif eve == events[3]:
-            library.find_by_year(random.choice(list(library.ind.year_index.keys())))
+            print(f'Информация: {library.find_by_year(random.choice(list(library.ind.year_index.keys())))}')
         elif eve == events[4]:
-            library.find_by_isbn(random.choice(list(library.ind.isbn_index.keys())))
+            print(f'Информация: {library.find_by_isbn(random.choice(list(library.ind.isbn_index.keys())))}')
         elif eve == events[5]:
             print(f"Статистика библиотеки:")
             print(f"Всего книг: {len(library)}")

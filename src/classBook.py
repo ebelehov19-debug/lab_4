@@ -8,8 +8,8 @@ class Book:
         self.genre = genre
         self.isbn = isbn
     def __repr__(self) -> str:
-        """Возвращает строковое представление объекта для разработчиков."""
-        return f"Book('{self.title}', '{self.author}', {self.year}, '{self.genre}', '{self.isbn}')"
+        """Возвращает строковое представление объекта."""
+        return f"'{self.title}', '{self.author}', {self.year}, '{self.genre}', '{self.isbn}'"
     def __eq__(self, other) -> bool:
         """Сравнивает две книги по ISBN номеру."""
         if not isinstance(other, Book):
