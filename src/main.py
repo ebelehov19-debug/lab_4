@@ -100,6 +100,8 @@ def main():
     while (a := input()) != 'exit':
         try:
             s = a.split()
+            if s[0].lower() == 'exit':
+                break
             if len(s) == 2:
                 run_simulation(int(s[0]), int(s[1]))
                 print("Работа симуляции завершилась. Можете ввести еще данные для работы симуляции или выйти, написав 'exit'")
