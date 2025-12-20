@@ -80,7 +80,7 @@ def test_change_publesher():
     )
     s=jornal.change_publesher('new')
     assert s == "Издательство изменено с 'NG' на 'new'"
-def test_cnt_jornal_yers_month():
+def test_cnt_jornal():
     jornal = Jornal("Журнал", "Автор", 2023, "Жанр", "52", 100, "month")
     s=jornal.cnt_jornal_yers()
     assert s== "Журнал Журнал за год вышел 12 раз"

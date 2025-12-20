@@ -13,8 +13,8 @@ def test_add_book():
     library = Library()
     book = Book("Война и мир", "Лев Толстой", 1869, "Роман", "52")
     result = library.add_book(book)
-    assert "Добавлена книга: Война и мир Лев Толстой" == result
-    assert len(library) == 1
+    assert "Добавлена книга: Война и мир Лев Толстой"== result
+    assert len(library)== 1
     assert book in library.books
     assert book.isbn in library.ind.isbn_index
 def test_add_books():
@@ -31,11 +31,11 @@ def test_add_books():
         assert book in library.books
 def test_remove_book():
     library = Library()
-    book = Book("Книга", "Автор", 2000, "Жанр", "ISBN-123")
+    book = Book("Книга", "Автор", 2000, "Жанр", "3")
     library.add_book(book)
     assert len(library) == 1
     result = library.remove_book(book) 
-    assert "Удажена книга: Книга Автор" in result
+    assert "Удажена книга: Книга Автор" == result
     assert len(library) == 0
     assert book not in library.books
     assert book.isbn not in library.ind.isbn_index
@@ -44,7 +44,7 @@ def test_remove_fake_book():
     library = Library()
     book = Book("Книга", "Автор", 2000, "Жанр", "ISBN-123")
     result = library.remove_book(book)
-    assert "Книги Книга Автор не было в библиотеке"== result
+    assert "Книги Книга Автор не было в библиотике"== result
     assert len(library) == 0
 def test_find_by_author():
     library = Library()

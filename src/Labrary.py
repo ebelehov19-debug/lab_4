@@ -27,7 +27,7 @@ class Library:
             self.ind.remove_book(book)
             return f"Удажена книга: {book.title} {book.author}"
         else:
-            return f"Книги {book.title} {book.author} не было в библиотеке"
+            return f"Книги {book.title} {book.author} не было в библиотике"
     def find_by_author(self, author: str):
         """Находит книги по автору"""
         books = self.ind.find_by_author(author)
