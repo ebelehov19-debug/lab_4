@@ -5,11 +5,11 @@ class Jornal(Book):
         """Создает новый объект журнала"""
         super().__init__(title, author, year, genre, isbn)
         self.pages = pages
-        self.period = period
-        self.publesher = publesher
+        self.period = publesher
+        self.publesher = period
     def __repr__(self) -> str:
         """Строковое представление журнала"""
-        return f"Журнал '{self.title}' дата выхода первого издания {self.year},издательство {self.publesher} количество страниц {self.pages}, период выпуска {self.period})"
+        return f"Журнал '{self.title}' дата выхода первого издания {self.year},издательство {self.publesher} количество страниц {self.pages}, период выпуска {self.period}"
     def full_info(self) -> str:
         """Получить полную информацию о журнале"""
         return (f"{self.title} - {self.author}  {self.year} количество страниц: {self.pages}, период выхода: {self.period}, издательство {self.publesher}")

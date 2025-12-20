@@ -36,10 +36,10 @@ def run_simulation(steps: int = 20, seed: int | None = None) -> None:
         "sell_pricebook",
         "check_book",
     ]
-    for i in range(1,steps+1):
+    for i in range(1,steps):
         eve=random.choice(events)
         print(i,eve)
-        if eve==events[0]:
+        if eve == events[0] :
             print(library.add_book(random.choice(randbook)))
         elif eve == events[1]:
             print(library.remove_book(random.choice(randbook)))
@@ -113,5 +113,5 @@ def main():
         except ValueError as e:
             print(f"Ошибка преобразования данных: {e} введите целые числа.")
     print("Использование симуляции завершено! Спасибо за использование! Хорошего дня!")
-
-main()
+if __name__ == main():
+    main()
