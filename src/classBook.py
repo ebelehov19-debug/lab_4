@@ -14,4 +14,4 @@ class Book:
         """Сравнивает две книги по ISBN номеру."""
         if not isinstance(other, Book):
             return False
-        return self.isbn == other.isbn
+        return hash(self.isbn) == hash(other.isbn)
